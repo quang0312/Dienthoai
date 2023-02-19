@@ -1,0 +1,146 @@
+﻿@model ShopOnline.Context.SanPham
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<script src="~/Asset/ckeditor/ckeditor.js"></script>
+<script src="~/Admin/dist/js/previewFile.js"></script>
+<style>
+    input[type=text] {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    input[type=submit] {
+        width: 100%;
+        background-color: #808080;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+        input[type=submit]:hover {
+            background-color: #b6ff00;
+        }
+</style>
+<body>
+    <script src="~/Admin/ckeditor/ckeditor.js"></script>
+    <h3 style="text-align:center">Sửa Sản Phẩm</h3>
+
+    <div style="margin:auto;">
+        @using (Html.BeginForm("Edit", "Product", FormMethod.Post, new { @style = "width:50%;margin:auto;", enctype = "multipart/form-data" }))
+        {
+            <p rowspan="8">
+                <div>
+                    <img id="target" class="img" src="#" alt="your image" style="text-align:left; width: 320px; height:300px;" />
+                </div>
+            </p>
+
+            <label for="fname">Mã Sản Phẩm</label>
+            <input type="text" id="fname" name="MaSP" placeholder="Mã Sản Phẩm.." value="@Model.MaSP" readonly>
+
+            <div class="form-group row">
+                <i class="fas fa-boxes fa-lg ml-3 col-form-label"></i>
+                @Html.LabelFor(model => model.MaLoaiSP, htmlAttributes: new { @class = "col-form-label font-weight-bold col-sm-2" })
+                <div class="col-md-6">
+
+                    @Html.DropDownList("MaLoaiSP", null, new { @class = "form-control " })
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <i class="fas fa-pallet fa-lg ml-3 col-form-label"></i>
+                @Html.LabelFor(model => model.MaNSX, htmlAttributes: new { @class = "col-form-label font-weight-bold col-sm-2" })
+                <div class="col-md-6">
+                    @Html.DropDownList("MaNSX", null, new { @class = "form-control" })
+                </div>
+            </div>
+
+            <label for="fname">Tên Sản Phẩm</label>
+            <input type="text" id="fname" name="TenSP" placeholder="Tên Sản Phẩm.." value="@Model.TenSP">
+
+
+            <div class="form-group row">
+                <i class="fas fa-image fa-lg ml-3 col-form-label" style=" height: 2em;width: 1em;"></i>
+                @Html.LabelFor(model => model.HinhChinh, htmlAttributes: new { @class = "col-form-label font-weight-bold col-sm-2" })
+                <div class="col-md-6">
+                    <input name="HinhChinh" type="file" onchange="previewFile()" />   <!--dùng lưu giá trị hình ảnh-->
+                    <img src="~/Asset/img/@Model.HinhChinh" style=" float:right; width:60px;height:60px;" />
+                    @Html.ValidationMessageFor(model => model.HinhChinh, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <i class="fas fa-image fa-lg ml-3 col-form-label" style=" height: 2em;width: 1em;"></i>
+                @Html.LabelFor(model => model.Hinh1, htmlAttributes: new { @class = "col-form-label font-weight-bold col-sm-2" })
+                <div class="col-md-6">
+                    <input name="Hinh1" type="file" />   <!--dùng lưu giá trị hình ảnh-->
+                    <img src="~/Asset/img/@Model.Hinh1" style=" float:right; width:60px;height:60px;" />
+                    @Html.ValidationMessageFor(model => model.Hinh1, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <i class="fas fa-images fa-lg ml-3 col-form-label" style=" height: 2em;width: 1em;"></i>
+                @Html.LabelFor(model => model.Hinh2, htmlAttributes: new { @class = "col-form-label font-weight-bold col-sm-2" })
+                <div class="col-md-6">
+                    <input name="Hinh2" type="file" />
+                    <img src="~/Asset/img/@Model.Hinh2" style=" float:right; width:60px;height:60px;" />
+                    @Html.ValidationMessageFor(model => model.Hinh2, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <i class="fas fa-images fa-lg ml-3 col-form-label" style=" height: 2em;width: 1em;"></i>
+                @Html.LabelFor(model => model.Hinh3, htmlAttributes: new { @class = "col-form-label font-weight-bold col-sm-2" })
+                <div class="col-md-6">
+                    <input name="Hinh3" type="file" />
+                    <img src="~/Asset/img/@Model.Hinh3" style=" float:right; width:60px;height:60px;" />
+                    @Html.ValidationMessageFor(model => model.Hinh3, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <label for="fname">Giá</label>
+            <input type="text" id="fname" name="Gia" placeholder="Giá.." value="@Model.Gia">
+
+            <label for="fname">Số lượng đã bán</label>
+            <input type="text" id="fname" name="SoLuongdaban" placeholder="Số lượng đã bán.." value="@Model.SoLuongdaban">
+
+            <label for="lname">Lượt View</label>
+            <input type="text" id="lname" name="LuotView" placeholder="Lượt View.." value="@Model.LuotView">
+
+
+            <label for="country">Tình Trạng</label>
+            <select id="country" name="TinhTrang" required>
+                @if (Model.TinhTrang == "1")
+                {
+                    <option value="0">Chưa Khóa</option>
+                    <option value="1" selected>Đã Khóa</option>
+                }
+                else
+                {
+                    <option value="0" selected>Chưa Khóa</option>
+                    <option value="1">Đã Khóa</option>
+                }
+
+            </select>
+
+            <label style="width:100%;" for="fname">Mô Tả</label>
+            <textarea class="ckeditor" name="MoTa" rows="4" , cols="30"></textarea>
+
+            <input type="submit" value="Sửa sản phẩm" />
+        }
+
+    </div>
+
+</body>

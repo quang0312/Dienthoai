@@ -1,0 +1,225 @@
+﻿@model List<ShopOnline.Context.SanPham>
+@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="slider-area">
+    <!-- Slider -->
+    <div class="block-slider block-slider4">
+        <ul class="" id="bxslider-home4">
+            <li>
+                <img style="width:1165px;height:380px;" src="~/Asset/img/h4-slide1.jpg" alt="Slide">
+                <div class="caption-group">
+                    <h2 style="color:white" class="caption title">
+                        iPhone <span style="color:white" class="primary">12 <strong>Pro Max</strong></span>
+                    </h2>
+                    <h4 style="color:white" class="caption subtitle">Perfect</h4>
+                    <a class="caption button-radius" href="@Url.Action("ShopPage", "ShopPage")"><span class="icon"></span>Shop now</a>
+
+                </div>
+            </li>
+            <li>
+                <img style="width:1165px;height:380px;" src="~/Asset/img/h4-slide2.jpg" alt="Slide">
+                <div class="caption-group">
+                    <h2 style="color:white" class="caption title">
+                        SamSung <span style="color:white" class="primary">Galaxy <strong>zflip</strong></span>
+                    </h2>
+                    <h4 style="color:white" class="caption subtitle">The pinnacle of technology</h4>
+                    <a class="caption button-radius" href="@Url.Action("ShopPage", "ShopPage")"><span class="icon"></span>Shop now</a>
+                </div>
+            </li>
+            <li>
+                <img style="width:1165px;height:380px;" src="~/Asset/img/Xiaomi-11-ra-mat-1.png" alt="Slide">
+                <div class="caption-group">
+                    <h2 style="color:white" class="caption title">
+                        Xiaomi <span style="color:white" class="primary"> Mi <strong>11</strong></span>
+                    </h2>
+                    <h4 style="color:white" class="caption subtitle">Professional</h4>
+                    <a class="caption button-radius" href="@Url.Action("ProductSamSung", "ShopPage")"><span class="icon"></span>Shop now</a>
+                </div>
+            </li>
+            <li>
+                <img style="width:1165px;height:380px;" src="~/Asset/img/h4-slide4.jpg" alt="Slide">
+                <div class="caption-group">
+                    <h2 style="color:white" class="caption title">
+                        Oppo <span style="color:white" class="primary">Sơn Tùng <strong>MTP</strong></span>
+                    </h2>
+                    <h4 style="color:white" class="caption subtitle">& Phone</h4>
+                    <a class="caption button-radius" href="@Url.Action("ShopPage", "ShopPage")"><span class="icon"></span>Shop now</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <!-- ./Slider -->
+</div> <!-- End slider area -->
+
+<div class="promo-area">
+    <div class="zigzag-bottom"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-6">
+                <div class="single-promo promo1">
+                    <i class="fa fa-refresh"></i>
+                    <p>30 Ngày Trở Lại</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="single-promo promo2">
+                    <i class="fa fa-truck"></i>
+                    <p>Free Shipping</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="single-promo promo3">
+                    <i class="fa fa-lock"></i>
+                    <p>Thanh Toán An Toàn</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="single-promo promo4">
+                    <i class="fa fa-gift"></i>
+                    <p>Sản Phẩm Mới</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> <!-- End promo area -->
+
+<div class="maincontent-area">
+    <div class="zigzag-bottom"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="latest-product">
+                    <h2 class="section-title">Sản Phẩm Mới Nhất
+                    </h2>
+                    <div class="product-carousel">
+                        @foreach (var item in Model)
+                        {
+                            <div class="single-product">
+                                <div class="product-f-image">
+                                    <a href="@Url.Action("Details", "ShopPage" ,new { id = item.MaSP })"><img style="width:195px;height:243px;" src="~/Asset/img/@item.HinhChinh"></a>
+                                    <div class="product-hover">
+                                        <a href="@Url.Action("AddToCart","Cart", new { @id = item.MaSP, @strURL = Request.Url.ToString() })" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ</a>
+                                        <a href="@Url.Action("Details", "ShopPage" ,new { id = item.MaSP })" class="view-details-link"><i class="fa fa-link"></i> Chi Tiết</a>
+                                    </div>
+                                </div>
+
+                                <h2><a href="@Url.Action("Details", "ShopPage" ,new { id = item.MaSP })">@item.TenSP</a></h2>
+
+                                <div class="product-carousel-price">
+                                    <h5 class="item_price">Price: @item.Gia.Value.ToString("#,##") VNĐ</h5>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> <!-- End main content area -->
+
+<div class="brands-area">
+    <div class="zigzag-bottom"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="brand-wrapper">
+                    <div class="brand-list">
+                        <a href="~/ShopPage/ProductSamSung/NSX02"><img src="~/Asset/img/brand3.png"></a>
+                        <a href="~/ShopPage/ProductSamSung/NSX01"><img src="~/Asset/img/brand4.png"></a>
+                        <a href="~/ShopPage/ProductSamSung/NSX03"><img src="~/Asset/img/brand7.jpg"></a>
+                        <a href="~/ShopPage/ProductSamSung/NSX04"><img src="~/Asset/img/brand8.jpg"></a>
+                        <img src="~/Asset/img/brand5.png" alt="">
+                        <img src="~/Asset/img/brand6.png" alt="">
+                        <img src="~/Asset/img/brand1.png" alt="">
+                        <img src="~/Asset/img/brand2.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> <!-- End brands area -->
+
+<div class="product-widget-area">
+    <div class="zigzag-bottom"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="single-product-widget">
+                    <h2 class="product-wid-title">Cao Cấp</h2>                                     
+                        <a href="~/ShopPage/LoaiSP/LSP01" class="wid-view-more">View All</a>                   
+                    @foreach (var item in Model.Take(4))
+                    {
+                        <div class="single-wid-product">
+                            <a href="@Url.Action("Details", "ShopPage", new { id = item.MaSP })"><img src="~/Asset/img/@item.HinhChinh" alt="" class="product-thumb"></a>
+                            <h2><a href="@Url.Action("Details", "ShopPage", new { id = item.MaSP })">@item.TenSP</a></h2>
+                            <div class="product-wid-rating">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                            <div class="product-wid-price">
+                                <a href="@Url.Action("Details", "ShopPage", new { id = item.MaSP })" class="item_price">Price: @item.Gia.Value.ToString("#,##") VNĐ</a>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="single-product-widget">
+                    <h2 class="product-wid-title">Trung Bình</h2>
+                    
+                        <a href="~/ShopPage/LoaiSP/LSP02" class="wid-view-more">View All</a>
+                    
+                    @foreach (var item in Model.Take(4))
+                    {
+                        <div class="single-wid-product">
+                            <a href="@Url.Action("Details", "ShopPage", new { id = item.MaSP })"><img src="~/Asset/img/@item.HinhChinh" alt="" class="product-thumb"></a>
+                            <h2><a href="@Url.Action("Details", "ShopPage", new { id = item.MaSP })">@item.TenSP</a></h2>
+                            <div class="product-wid-rating">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                            <div class="product-wid-price">
+                                <a href="@Url.Action("Details", "ShopPage", new { id = item.MaSP })" class="item_price">Price: @item.Gia.Value.ToString("#,##") VNĐ</a>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="single-product-widget">
+                    <h2 class="product-wid-title">Thấp</h2>
+                    
+                        <a href="~/ShopPage/LoaiSP/LSP03" class="wid-view-more">View All</a>
+                    
+                    @foreach (var item in Model.Take(4))
+                    {
+                        <div class="single-wid-product">
+                            <a href="@Url.Action("Details", "ShopPage", new { id = item.MaSP })"><img src="~/Asset/img/@item.HinhChinh" alt="" class="product-thumb"></a>
+                            <h2><a href="@Url.Action("Details", "ShopPage", new { id = item.MaSP })">@item.TenSP</a></h2>
+                            <div class="product-wid-rating">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                            <div class="product-wid-price">
+                                <a href="@Url.Action("Details", "ShopPage", new { id = item.MaSP })" class="item_price">Price: @item.Gia.Value.ToString("#,##") VNĐ</a>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div> <!-- End product widget area -->

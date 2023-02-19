@@ -1,0 +1,59 @@
+﻿@model ShopOnline.Context.LoaiSanPham
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+<style>
+    input[type=text] {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    input[type=submit] {
+        width: 100%;
+        background-color: #808080;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+        input[type=submit]:hover {
+            background-color: #b6ff00;
+        }
+</style>
+
+<body>
+
+    <h3 style="text-align:center">Thêm Loại Sản Phẩm</h3>
+
+    <div style="margin:auto;">
+        @using (Html.BeginForm("Create", "LoaiSP", FormMethod.Post, new { @style = "width:50%;margin:auto;", enctype = "multipart/form-data" }))
+        {
+            <label for="fname">Mã Loại Sản Phẩm</label>
+            <input type="text" id="fname" name="MaLoaiSP" placeholder="Mã loại sản phẩm..">
+
+            <label for="fname">Tên Loại Sản Phẩm</label>
+            <input type="text" id="fname" name="TenLoaiSP" placeholder="Tên loại sản phẩm..">
+
+            <label for="country">Tình Trạng</label>
+            <select id="country" name="TinhTrang" required>
+                <option value="0">Chưa Khóa</option>
+                <option value="1">Đã Khóa</option>
+            </select>
+
+            <input type="submit" value="Thêm mới Loại Sản Phẩm">
+        }
+
+    </div>
+
+</body>

@@ -1,0 +1,9 @@
+﻿<div class="col-sm-6">
+    <div class="shopping-item">
+        <a href="@Url.Action("Index" , "Cart")">
+            Giỏ Hàng  <i class="fa fa-shopping-cart"></i>
+            <span class="cart-amunt">@ViewBag.TongTien.ToString("#,##") VNĐ</span>
+            <span class="product-count"> @ViewBag.TongSoLuong</span>
+        </a>
+    </div>
+</div>

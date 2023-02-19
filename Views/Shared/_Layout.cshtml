@@ -1,0 +1,235 @@
+﻿@using ShopOnline.Context;
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Shop Minh Quang</title>
+
+    <!-- Google Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,200,300,700,600' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700,300' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,100' rel='stylesheet' type='text/css'>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="~/Asset/css/bootstrap.min.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="~/Asset/css/font-awesome.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="~/Asset/css/owl.carousel.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="~/Asset/css/responsive.css">
+    <meta name="viewport" content="width=device-width" />
+
+    <link href="~/Asset/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Asset/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Asset/css/owl.carousel.css" rel="stylesheet" />
+    <link href="~/Asset/css/responsive.css" rel="stylesheet" />
+    <link href="~/Asset/css/style.css" rel="stylesheet" />
+    <script src="~/Asset/js/bxslider.min.js"></script>
+    <script src="~/Asset/js/jquery.easing.1.3.min.js"></script>
+    <script src="~/Asset/js/jquery.sticky.js"></script>
+    <script src="~/Asset/js/main.js"></script>
+    <script src="~/Asset/js/owl.carousel.min.js"></script>
+    <script src="~/Asset/js/script.slider.js"></script>
+    <script src="~/Asset/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Asset/js/jquery-2.0.0.min.js"></script>
+    <script src="~/Asset/js/script.js"></script>
+    <script src="~/Asset/ckeditor/ckeditor.js"></script>
+</head>
+<body>
+    <a href="~/Asset/fonts/fontawesome-webfont.eot"></a>
+    <a href="~/Asset/fonts/fontawesome-webfont.ttf"></a>
+    <a href="~/Asset/fonts/fontawesome-webfont.woff"></a>
+    <a href="~/Asset/fonts/FontAwesome.otf"></a>
+    <a href="~/Asset/fonts/glyphicons-halflings-regular.eot"></a>
+    <a href="~/Asset/fonts/glyphicons-halflings-regular.ttf"></a>
+    <a href="~/Asset/fonts/glyphicons-halflings-regular.woff"></a>
+
+    <div class="header-area">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="user-menu">
+                        <ul>
+                            @if (Session["id"] != null && Session["id"].ToString() != "")
+                                    {
+                                        
+                                <li><a href="~/Admin/Admin/Index"><i class="fa fa-user"></i> Xin chào:  </a></li>
+                                <li><a href="~/Home/Logout" class="fa fa-lock">Đăng Xuất</a></li>
+                            }
+                            else
+                            {
+                                <li><a href="~/Home/Register"><i class="fa fa-user"></i> Đăng Ký</a></li>
+                                <li><a href="~/Home/Login"><i class="fa fa-user"></i> Đăng Nhập</a></li>
+
+                            }
+                            <li><a href="#"><i class="fa fa-heart"></i> Wishlist</a></li>
+                            <li><a href="@Url.Action("Index","Cart")"><i class="fa fa-shopping-cart"></i> Giỏ Hàng</a></li>
+                            <li><a href="@Url.Action("Index","ThanhToan")"><i class="fa fa-cc-discover"></i> Thanh Toán</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="header-right">                    
+                        <div class="search">
+                            @using (Html.BeginForm("LayTuKhoaTimKiem", "TimKiem"))
+                            {
+                                <form>
+                                    <input type="text" name="sTuKhoa" value="Tìm Kiếm" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Tìm Kiếm...';}">
+                                    <input type="submit" value="Tìm Kiếm">
+                                </form>
+                            }
+                            </div>                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="site-branding-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="logo">
+                        <h1><a href="@Url.Action("Index","Home")"><img src="~/Asset/img/logo.png"></a></h1>
+                    </div>
+                </div>
+                @Html.Action("GioHangPartial","Cart")
+            </div>
+        </div>
+    </div> <!-- End site branding area -->
+
+
+   @Html.Action("MenuPartial","Home")
+
+
+
+    <div>
+        @RenderBody()
+    </div>
+
+
+    @RenderSection("footer", required: false)
+    <div class="footer-top-area">
+        <div class="zigzag-bottom"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-6">
+                    <div class="footer-about-us">
+                        <h2>u<span>Stora</span></h2>
+                        <p>Là Trang web bán điện thoại online uy tín . Cung cấp những chiếc điện thoại từ phổ thông đến cao cấp nhất nhằm đáp ứng nhu cầu của mọi tầng lớp người tiêu dùng</p>
+                        <div class="footer-social">
+                            <a href="#" target="_blank"><i class="fa fa-facebook"></i></a>
+                            <a href="#" target="_blank"><i class="fa fa-twitter"></i></a>
+                            <a href="#" target="_blank"><i class="fa fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-6">
+                    <div class="footer-menu">
+                        <h2 class="footer-wid-title"> Người Dùng </h2>
+                        <ul>
+                            <li><a href="~/Admin/Admin/Index">Tài Khoản của tôi</a></li>
+
+                            <li><a href="@Url.Action("Index" , "Cart")">Giỏ Hàng</a></li>
+                            <li><a href="@Url.Action("Index","ThanhToan")">Thanh Toán</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-6">
+                    <div class="footer-menu">
+                        <h2 class="footer-wid-title">Hãng Điện Thoại</h2>
+                        <ul>
+                            <li><a href="~/ShopPage/ProductSamSung/NSX01">IPHONE</a></li>
+                            <li><a href="~/ShopPage/ProductSamSung/NSX02">SamSung</a></li>
+                            <li><a href="~/ShopPage/ProductSamSung/NSX03">Xiaomi</a></li>
+                            <li><a href="~/ShopPage/ProductSamSung/NSX04">Oppo</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-6">
+                    <div class="footer-menu">
+                        <h2 class="footer-wid-title">Loại Điện Thoại</h2>
+                        <ul>
+                            <li><a href="@Url.Action("ShopPage", "ShopPage")">Điện Thoại</a></li>
+                            <li><a href="~/ShopPage/LoaiSP/LSP01">Điện Thoại Cao Cấp</a></li>
+                            <li><a href="~/ShopPage/LoaiSP/LSP02">Điện Thoại Trung Bình</a></li>
+                            <li><a href="~/ShopPage/LoaiSP/LSP03">Điện Thoại Loại Thấp</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+
+                <div class="col-md-3 col-sm-6">
+                    <div class="footer-newsletter">
+                        <h2 class="footer-wid-title">Bản Tin</h2>
+                        <p>Đăng ký nhận bản tin của chúng tôi và nhận các ưu đãi độc quyền mà bạn sẽ không tìm thấy ở bất kỳ nơi nào khác ngay trong hộp thư đến của bạn!</p>
+                        <div class="newsletter-form">
+                            <form action="#">
+                                <input type="email" placeholder="Điền email">
+                                <input type="submit" value="Đăng Ký">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- End footer top area -->
+
+    <div class="footer-bottom-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="copyright">
+                        <p>&copy; Thiết kế bởi Minh Quang <a href="https://www.facebook.com/sieu.1nhanquang" target="_blank">facebook/sieu.1nhanquang</a></p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="footer-card-icon">
+                        <i class="fa fa-cc-discover"></i>
+                        <i class="fa fa-cc-mastercard"></i>
+                        <i class="fa fa-cc-paypal"></i>
+                        <i class="fa fa-cc-visa"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- End footer bottom area -->
+    <!-- Latest jQuery form server -->
+    <script src="https://code.jquery.com/jquery.min.js"></script>
+
+    <!-- Bootstrap JS form CDN -->
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/~/Asset/js/bootstrap.min.js"></script>
+
+    <!-- jQuery sticky menu -->
+    <script src="~/Asset/js/owl.carousel.min.js"></script>
+    <script src="~/Asset/js/jquery.sticky.js"></script>
+
+    <!-- jQuery easing -->
+    <script src="~/Asset/js/jquery.easing.1.3.min.js"></script>
+
+    <!-- Main Script -->
+    <script src="~/Asset/js/main.js"></script>
+
+    <!-- Slider -->
+    <script type="text/javascript" src="~/Asset/js/bxslider.min.js"></script>
+    <script type="text/javascript" src="~/Asset/js/script.slider.js"></script>
+
+    <script src="~/Admin/ckeditor/ckeditor.js"></script>
+</body>
+
+
+</html>

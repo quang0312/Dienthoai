@@ -1,0 +1,173 @@
+﻿
+@{
+    ViewBag.Title = "ThanhToan";
+}
+
+
+
+<div class="product-big-title-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="product-bit-title text-center">
+                    <h2>Giỏ Hàng</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> <!-- End Page title area -->
+
+
+<div class="single-product-area">
+    <div class="zigzag-bottom"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="single-sidebar">
+                    <h2 class="sidebar-title">Tìm Kiếm Sản Phẩm</h2>
+                    <form action="">
+                        <input type="text" placeholder="Tìm Kiếm...">
+                        <input type="submit" value="Tìm Kiếm">
+                    </form>
+                </div>
+
+                <div class="single-sidebar">
+                    <h2 class="sidebar-title">Sản Phẩm Nổi Bật</h2>
+                    <div class="thubmnail-recent">
+                        <a href="~/ShopPage/Details/SP16"> <img style="width:70px; height:70px" src="~/Asset/img/637170935875912528-ss-s20-ultra-den-1.jpg" class="recent-thumb" alt=""></a>
+                        <h2><a href="~/ShopPage/Details/SP16">SamSung S20 Ultra</a></h2>
+                        <div class="product-sidebar-price">
+                            <ins>21.000.000 VNĐ</ins>
+                        </div>
+                    </div>
+                    <div class="thubmnail-recent">
+                        <a href="~/ShopPage/Details/SP13"> <img style="width:70px; height:70px" src="~/Asset/img/13.jpg" class="recent-thumb" alt=""></a>
+                        <h2><a href="~/ShopPage/Details/SP13">Xiaomi Mi 11 Lite</a></h2>
+                        <div class="product-sidebar-price">
+                            <ins>4.350.000 VNĐ</ins>
+                        </div>
+                    </div>
+                    <div class="thubmnail-recent">
+                        <a href="~/ShopPage/Details/SP02"> <img style="width:70px; height:70px" src="~/Asset/img/2.jpg" class="recent-thumb" alt=""></a>
+                        <h2><a href="~/ShopPage/Details/SP02">iPhone 11 Pro</a></h2>
+                        <div class="product-sidebar-price">
+                            <ins>23.500.000 VNĐ</ins>
+                        </div>
+                    </div>
+                    <div class="thubmnail-recent">
+                        <a href="~/ShopPage/Details/SP09"> <img style="width:70px; height:70px" src="~/Asset/img/9.jpg" class="recent-thumb" alt=""></a>
+                        <h2><a href="~/ShopPage/Details/SP09">OPPO Find X3</a></h2>
+                        <div class="product-sidebar-price">
+                            <ins>11.600.000 VNĐ</ins>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="single-sidebar">
+                    <h2 class="sidebar-title">Bài đăng gần đây</h2>
+                    <ul>
+
+                        <li><a href="~/ShopPage/Details/SP16">SamSung S20 Ultra</a></li>
+                        <li><a href="~/ShopPage/Details/SP13">Xiaomi Mi 11 Lite</a></li>
+                        <li><a href="~/ShopPage/Details/SP02">iPhone 11 Pro</a></li>
+                        <li><a href="~/ShopPage/Details/SP03">iPhone 12 Pro</a></li>
+                        <li><a href="~/ShopPage/Details/SP09">OPPO Find X3</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-md-8">
+                <div class="product-content-right">
+                    <div class="woocommerce">
+                        <form method="post" action="#">
+                            @if (Model == null) //nếu list giỏ hàng rỗng thì xuất thông báo
+                            {
+                                <h1 style="color:crimson">Giỏ hàng rỗng</h1>
+                            }
+                            else
+                            {
+                                <table cellspacing="0" class="shop_table cart">
+                                    <thead>
+                                        <tr>
+                                            <th class="product-remove">&nbsp;</th>
+                                            <th class="product-thumbnail">Hình Ảnh</th>
+                                            <th class="product-name">Tên Sản Phẩm</th>
+                                            <th class="product-price">Đơn giá</th>
+                                            <th class="product-quantity">Số Lượng</th>
+                                            <th class="product-subtotal">Thành Tiền</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model)
+                                        {
+                                            <tr class="cart_item">
+
+                                                <td class="product-remove">
+                                                    <input type="hidden" value="@item.MaSP" id="sanphamid" />
+                                                    <a title="Remove this item" class="delIcon" href="@Url.Action("XoaGioHang" , "Cart" ,new { @id = item.MaSP })">Xóa</a>
+                                                    <a title="Edit this item" class="editIcon" href="@Url.Action("SuaGioHang" , "Cart" ,new { @id = item.MaSP })">Sửa</a>
+
+                                                </td>
+
+                                                <td class="product-thumbnail">
+                                                    <a href="single-product.html"><img width="145" height="145" alt="poster_1_up" class="shop_thumbnail" src="~/Asset/img/@item.HinhChinh"></a>
+                                                </td>
+
+                                                <td class="product-name">
+                                                    <a href="single-product.html">@item.TenSP</a>
+                                                </td>
+
+                                                <td class="product-price">
+                                                    <span class="amount">@item.Gia.ToString("#,##") VNĐ </span>
+                                                </td>
+
+                                                <td class="qty">
+                                                    <p>@item.SoLuong</p>
+                                                </td>
+
+                                                <td class="product-subtotal">
+                                                    <span class="amount">@item.ThanhTien.ToString("#,##") VNĐ</span>
+                                                </td>
+                                            </tr>
+                                        }
+                                        <tr>
+                                            <td class="actions" colspan="6">
+                                                <div class="coupon">
+                                                    <label for="coupon_code">Coupon:</label>
+                                                    <input type="text" placeholder="Coupon code" value="" id="coupon_code" class="input-text" name="coupon_code">
+                                                    <input type="submit" value="Mã Giảm Giá" name="apply_coupon" class="button">
+                                                    <span>Tổng cộng</span>
+                                                    <span class="total1">@ViewBag.TongTien.ToString("#,##") VNĐ</span>
+                                                </div>                                              
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            }
+                        </form>
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Latest jQuery form server -->
+<script src="https://code.jquery.com/jquery.min.js"></script>
+
+<!-- Bootstrap JS form CDN -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+<!-- jQuery sticky menu -->
+<script src="js/owl.carousel.min.js"></script>
+<script src="js/jquery.sticky.js"></script>
+
+<!-- jQuery easing -->
+<script src="js/jquery.easing.1.3.min.js"></script>
+
+<!-- Main Script -->
+<script src="js/main.js"></script>

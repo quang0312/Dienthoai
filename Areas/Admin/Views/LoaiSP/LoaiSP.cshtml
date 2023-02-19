@@ -1,0 +1,59 @@
+﻿@model List<ShopOnline.Context.LoaiSanPham>
+@{
+    ViewBag.Title = "LoaiSP";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+<head>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 85%;
+            margin: auto;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 5px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2 style="text-align:center">Quản Lý Nhà Sản Xuất </h2>
+    <p style="text-align:center"> @Html.ActionLink("Create", "Create", "LoaiSP")</p>
+
+
+    <div style="overflow-x:auto;">
+        <table>
+            <tr>
+                <th>Mã Loại Sản Phẩm</th>
+                <th>Tên Loại Sản Phẩm</th>
+                <th>Tình Trạng</th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.MaLoaiSP</td>
+                    <td>@item.TenLoaiSP</td>
+                    <td>@item.TinhTrang</td>
+                    <td>
+                        <a href="@Url.Action("Edit", "LoaiSP", new { id = item.MaLoaiSP })" class="nav-link active">Edit</a>
+                        <a href="@Url.Action("Detais", "LoaiSP", new { id = item.MaLoaiSP })" class="nav-link active">Detais</a>
+                        <a href="@Url.Action("Delete", "LoaiSP", new { id = item.MaLoaiSP })" class="nav-link active">Delete</a>
+
+                    </td>
+                </tr>
+            }
+
+
+        </table>
+    </div>
+
+</body>

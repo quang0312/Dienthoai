@@ -1,0 +1,48 @@
+﻿@model ShopOnline.Context.NhaSanXuat
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2 style="text-align:center" >Delete</h2>
+
+<h3  style="text-align:center">Are you sure you want to delete this?</h3>
+<div>
+    <a href="@Url.Action("NhaSanXuat", "NhaSanXuat")" class="nav-link active" style="text-align:center">Nhà Sản Xuất</a>
+    <hr />
+    <dl style="width:70%;margin:auto;" class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MaNSX)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MaNSX)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TenNSX)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenNSX)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TinhTrang)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TinhTrang)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm("Delete", "NhaSanXuat", FormMethod.Post, new { @style = "width:50%;margin:auto;", enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div style="width:50%;margin:auto;" class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "NhaSanXuat" , "NhaSanXuat")
+        </div>
+    }
+</div>

@@ -1,0 +1,68 @@
+﻿@model List<ShopOnline.Context.ThanhToan>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+<head>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 85%;
+            margin: auto;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 5px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2 style="text-align:center">Quản Lý Đơn Hàng </h2>
+    <p style="text-align:center"> @Html.ActionLink("Create", "Create", "DonHang")</p>
+
+
+    <div style="overflow-x:auto;">
+        <table>
+            <tr>
+                <th>Họ Tên</th>
+                <th>User ID</th>
+                <th>Số điện thoại</th>
+                <th>Ngày Tạo </th>
+                <th>Email</th>
+                <th>Địa Chỉ</th>
+            </tr>
+            @foreach(var item in Model)
+            {
+        <tr>
+            <td>@item.Name</td>
+            <td>@item.UserID</td>
+            <td>@item.Status</td>
+            <td>@item.NgayTao</td>
+            <td>@item.Email</td>
+            <td>@item.DiaChi</td>
+            <td>
+                <a href="@Url.Action("Edit", "DonHang", new { id = item.id })" class="nav-link active">Edit</a>
+                <a href="@Url.Action("Detais", "DonHang", new { id = item.id })" class="nav-link active">Detais</a>
+                <a href="@Url.Action("Delete", "DonHang", new { id = item.id })" class="nav-link active">Delete</a>
+
+            </td>
+        </tr>
+            }
+
+
+        </table>
+    </div>
+
+</body>
+
+

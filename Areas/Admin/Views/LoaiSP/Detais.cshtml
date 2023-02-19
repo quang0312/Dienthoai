@@ -1,0 +1,39 @@
+﻿@model ShopOnline.Context.LoaiSanPham
+
+@{
+    ViewBag.Title = "Detais";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2 style="text-align:center">Detais</h2>
+
+<div>
+    <a href="@Url.Action("LoaiSP", "LoaiSP")" class="nav-link active" style="text-align:center">Loại Sản Phẩm</a>
+    <hr />
+    <dl style="width:70%;margin:auto;" class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MaLoaiSP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaLoaiSP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TenLoaiSP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenLoaiSP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TinhTrang)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TinhTrang)
+        </dd>
+
+    </dl>
+</div>

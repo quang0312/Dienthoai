@@ -1,0 +1,39 @@
+﻿@model ShopOnline.Context.NhaSanXuat
+
+@{
+    ViewBag.Title = "Detais";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2 style="text-align:center">Detais</h2>
+
+<div>
+    <a href="@Url.Action("NhaSanXuat", "NhaSanXuat")" class="nav-link active" style="text-align:center">Nhà Sản Xuất</a>
+    <hr />
+    <dl style="width:70%;margin:auto;" class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MaNSX)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaNSX)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TenNSX)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenNSX)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TinhTrang)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TinhTrang)
+        </dd>
+
+    </dl>
+</div>
+

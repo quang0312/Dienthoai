@@ -1,0 +1,275 @@
+﻿@model ShopOnline.Context.SanPham
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="product-big-title-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="product-bit-title text-center">
+                    <h2>Detais</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="single-product-area">
+    <div class="zigzag-bottom"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="single-sidebar">
+                    <h2 class="sidebar-title">Tìm Kiếm Sản Phẩm</h2>
+                    <form action="">
+                        <input type="text" placeholder="Tìm Kiếm...">
+                        <input type="submit" value="Tìm Kiếm">
+                    </form>
+                </div>
+
+                <div class="single-sidebar">
+                    <h2 class="sidebar-title">Sản Phẩm Nổi Bật</h2>
+                    <div class="thubmnail-recent">
+                        <a href="~/ShopPage/Details/SP16"> <img style="width:70px; height:70px" src="~/Asset/img/637170935875912528-ss-s20-ultra-den-1.jpg" class="recent-thumb" alt=""></a>
+                        <h2><a href="~/ShopPage/Details/SP16">SamSung S20 Ultra</a></h2>
+                        <div class="product-sidebar-price">
+                            <ins>21.000.000 VNĐ</ins> 
+                        </div>
+                    </div>
+                    <div class="thubmnail-recent">
+                        <a href="~/ShopPage/Details/SP13"> <img style="width:70px; height:70px" src="~/Asset/img/13.jpg" class="recent-thumb" alt=""></a>                        
+                        <h2><a href="~/ShopPage/Details/SP13">Xiaomi Mi 11 Lite</a></h2>
+                        <div class="product-sidebar-price">
+                            <ins>4.350.000 VNĐ</ins>
+                        </div>
+                    </div>
+                    <div class="thubmnail-recent">
+                        <a href="~/ShopPage/Details/SP02"> <img style="width:70px; height:70px" src="~/Asset/img/2.jpg" class="recent-thumb" alt=""></a>
+                        <h2><a href="~/ShopPage/Details/SP02">iPhone 11 Pro</a></h2>
+                        <div class="product-sidebar-price">
+                            <ins>23.500.000 VNĐ</ins> 
+                        </div>
+                    </div>
+                    <div class="thubmnail-recent">
+                        <a href="~/ShopPage/Details/SP09"> <img style="width:70px; height:70px" src="~/Asset/img/9.jpg" class="recent-thumb" alt=""></a>
+                        <h2><a href="~/ShopPage/Details/SP09">OPPO Find X3</a></h2>
+                        <div class="product-sidebar-price">
+                            <ins>11.600.000 VNĐ</ins> 
+                        </div>
+                    </div>
+                </div>
+
+                <div class="single-sidebar">
+                    <h2 class="sidebar-title">Bài đăng gần đây</h2>
+                    <ul>
+                       
+                        <li><a href="~/ShopPage/Details/SP16">SamSung S20 Ultra</a></li>
+                        <li><a href="~/ShopPage/Details/SP13">Xiaomi Mi 11 Lite</a></li>
+                        <li><a href="~/ShopPage/Details/SP02">iPhone 11 Pro</a></li>
+                        <li><a href="~/ShopPage/Details/SP03">iPhone 12 Pro</a></li>
+                        <li><a href="~/ShopPage/Details/SP09">OPPO Find X3</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-md-8">
+                <div class="product-content-right">
+                    <div class="product-breadcroumb">
+                        @Html.ActionLink("Home", "Index", "Home")
+
+                        @Html.ActionLink(Model.TenSP, "Details", "ShopPage", new { id = Model.MaSP })
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="product-images">
+                                <div class="product-main-img">
+                                    <img style="width:295px;height:340px;" src="~/Asset/img/@Model.HinhChinh" alt="">
+                                </div>
+
+                                <div class="product-gallery">
+                                    <img src="~/Asset/img/@Model.Hinh1" alt="">
+                                    <img src="~/Asset/img/@Model.Hinh2" alt="">
+                                    <img src="~/Asset/img/@Model.Hinh3" alt="">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="product-inner">
+                                <h2 class="product-name">@Model.TenSP</h2>
+                                <div class="product-inner-price">
+                                    <h5 class="item_price">Price: @Model.Gia.Value.ToString("#,##") VNĐ</h5>
+                                </div>
+
+                                <form action="" class="cart">
+                                    <div class="quantity">
+                                        <input type="number" size="4"   class="input-text qty text" title="Qty" value="1" name="Quantity" min="1" step="1">
+                                    </div>
+                                    <a href="@Url.Action("AddToCart","Cart", new { @id = Model.MaSP, @strURL = Request.Url.ToString() })" class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow">Add to cart</a>
+                                </form>
+
+                                <div class="product-inner-category">
+                                    <p>Category: <a href="">Summer</a>. Tags: <a href="">awesome</a>, <a href="">best</a>, <a href="">sale</a>, <a href="">shoes</a>. </p>
+                                </div>
+
+                                <div role="tabpanel">
+                                    <ul class="product-tab" role="tablist">
+                                        <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Description</a></li>
+                                        <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Reviews</a></li>
+                                    </ul>
+                                    <div class="tab-content">
+                                        <div role="tabpanel" class="tab-pane fade in active" id="home">
+                                            <h2>Mô tả Sản Phẩm</h2>
+                                            <p>@Html.Raw(Model.MoTa)</p>
+                                        </div>
+                                        <div role="tabpanel" class="tab-pane fade" id="profile">
+                                            <h2>Reviews</h2>
+                                            <div class="submit-review">
+                                                <p><label for="name">Name</label> <input name="name" type="text"></p>
+                                                <p><label for="email">Email</label> <input name="email" type="email"></p>
+                                                <div class="rating-chooser">
+                                                    <p>Your rating</p>
+                                                    <div class="rating-wrap-post">
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                    </div>
+                                                </div>
+                                                <p><label for="review">Your review</label> <textarea name="review" id="" cols="30" rows="10"></textarea></p>
+                                                <p><input type="submit" value="Submit"></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="related-products-wrapper">
+                        <h2 class="related-products-title">Sản Phẩm Liên Quan</h2>
+                        <div class="related-products-carousel">
+
+                            <div class="single-product">
+                                <div class="product-f-image">
+                                    <img src="~/Asset/img/3.jpg" alt="">
+                                    <div class="product-hover">
+                                        <a href="" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ</a>
+                                        <a href="~/ShopPage/Details/SP03" class="view-details-link"><i class="fa fa-link"></i> Chi Tiết</a>
+                                    </div>
+                                </div>
+
+                                <h2><a href="~/ShopPage/Details/SP03">IPhone 12 Pro</a></h2>
+
+                                <div class="product-carousel-price">
+                                    <ins>25.200.000 VNĐ</ins> <del></del>
+                                </div>
+                            </div>                         
+                            <div class="single-product">
+                                <div class="product-f-image">
+                                    <img src="~/Asset/img/6.jpg" alt="">
+                                    <div class="product-hover">
+                                        <a href="" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ</a>
+                                        <a href="~/ShopPage/Details/SP06" class="view-details-link"><i class="fa fa-link"></i> Chi Tiết</a>
+                                    </div>
+                                </div>
+
+                                <h2><a href="~/ShopPage/Details/SP06">Xiaomi Redmi Note 10</a></h2>
+                                <div class="product-carousel-price">
+                                    <ins>8.200.000 VNĐ</ins> 
+                                </div>
+                            </div>
+                            <div class="single-product">
+                                <div class="product-f-image">
+                                    <img src="~/Asset/img/9.jpg" alt="">
+                                    <div class="product-hover">
+                                        <a href="" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ</a>
+                                        <a href="~/ShopPage/Details/SP09" class="view-details-link"><i class="fa fa-link"></i> Chi Tiết</a>
+                                    </div>
+                                </div>
+
+                                <h2><a href="~/ShopPage/Details/SP09">OPPO Find X3</a></h2>
+
+                                <div class="product-carousel-price">
+                                    <ins>11.600.000 VNĐ</ins> 
+                                </div>
+                            </div>
+                            <div class="single-product">
+                                <div class="product-f-image">
+                                    <img src="~/Asset/img/4.jpg" alt="">
+                                    <div class="product-hover">
+                                        <a href="" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ</a>
+                                        <a href="~/ShopPage/Details/SP04" class="view-details-link"><i class="fa fa-link"></i> Chi Tiết</a>
+                                    </div>
+                                </div>
+
+                                <h2><a href="~/ShopPage/Details/SP04">SamSung Galaxy A22</a></h2>
+
+                                <div class="product-carousel-price">
+                                    <ins>5.210.000 VNĐ</ins> 
+                                </div>
+                            </div>
+                            <div class="single-product">
+                                <div class="product-f-image">
+                                    <img src="~/Asset/img/12.jpg" alt="">
+                                    <div class="product-hover">
+                                        <a href="" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ</a>
+                                        <a href="~/ShopPage/Details/SP12" class="view-details-link"><i class="fa fa-link"></i> Chi Tiết</a>
+                                    </div>
+                                </div>
+
+                                <h2><a href="~/ShopPage/Details/SP12">Samsung Galaxy A72</a></h2>
+
+                                <div class="product-carousel-price">
+                                    <ins>8.800.000 VNĐ</ins>
+                                </div>
+                            </div>
+                            <div class="single-product">
+                                <div class="product-f-image">
+                                    <img src="~/Asset/img/8.jpg" alt="">
+                                    <div class="product-hover">
+                                        <a href="" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ</a>
+                                        <a href="~/ShopPage/Details/SP08" class="view-details-link"><i class="fa fa-link"></i> Chi Tiết</a>
+                                    </div>
+                                </div>
+
+                                <h2><a href="~/ShopPage/Details/SP08">Xiaomi Mi 11</a></h2>
+
+                                <div class="product-carousel-price">
+
+                                 <a href="~/ShopPage/Details/SP08">  <ins>19.500.000 VNĐ</ins> </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Latest jQuery form server -->
+<script src="https://code.jquery.com/jquery.min.js"></script>
+
+<!-- Bootstrap JS form CDN -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+<!-- jQuery sticky menu -->
+<script src="js/owl.carousel.min.js"></script>
+<script src="js/jquery.sticky.js"></script>
+
+<!-- jQuery easing -->
+<script src="js/jquery.easing.1.3.min.js"></script>
+
+<!-- Main Script -->
+<script src="js/main.js"></script>
+
+
